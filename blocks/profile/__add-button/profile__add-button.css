@@ -7,7 +7,7 @@
     background-color: transparent;
     color: inherit;
     cursor: pointer;
-    outline: none !important;
+    outline: none;
     margin: auto;
     margin-right: 0;
 }

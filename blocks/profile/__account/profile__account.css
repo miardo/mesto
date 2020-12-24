@@ -5,9 +5,17 @@
     max-width: 55%;
 }
 
-@media screen and (max-width: 869px) {
+@media screen and (min-width: 550px) and (max-width: 1023px) {
+    .profile__account {
+        max-width: 290px;
+        width: 100%
+    }
+}
+
+@media screen and (max-width: 549px) {
     .profile__account {
         max-width: 282px;
+        width: 100%;
         align-items: center;
     }
 }
