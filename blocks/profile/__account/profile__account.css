@@ -1,0 +1,13 @@
+.profile__account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 55%;
+}
+
+@media screen and (max-width: 869px) {
+    .profile__account {
+        max-width: 282px;
+        align-items: center;
+    }
+}

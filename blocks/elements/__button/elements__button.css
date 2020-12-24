@@ -1,0 +1,20 @@
+.elements__button {
+    min-width: 20px;
+    min-height: 18px;
+    background-image: url('../../../images/like.svg');
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    outline: none !important;
+    margin-left: 21px;
+}
+
+.elements__button:hover {
+    opacity: 0.6;
+}
+
+.elements__button:active {
+    background-image: url('../../../images/like-active.svg');
+}
