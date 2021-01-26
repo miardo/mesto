@@ -9,12 +9,9 @@
     cursor: pointer;
     outline: none;
     margin-left: 21px;
+    background-repeat: repeat;
 }
 
 .elements__button:hover {
     opacity: 0.5;
-}
-
-.elements__button:active {
-    background-image: url('../../../images/like-active.svg');
 }
