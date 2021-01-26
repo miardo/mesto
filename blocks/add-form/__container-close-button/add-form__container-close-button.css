@@ -1,0 +1,27 @@
+.add-form__container-close-button {
+    position: absolute;
+    min-width: 40px;
+    min-height: 40px;
+    background-image: url('../../../images/close-icon.svg');
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    top: -40px;
+    right: -40px;
+    outline: none;
+}
+
+.add-form__container-close-button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 550px) {
+    .add-form__container-close-button {
+        min-width: 36px;
+        min-height: 36px;
+        top: -50px;
+        right: 0px;
+    }
+}

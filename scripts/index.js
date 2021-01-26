@@ -105,7 +105,7 @@ function handleSubmit(evt) {
     renderItem();
     del();
     like();
-    PopImage();
+    popImage();
 }
 
 function openPopup() {
@@ -150,5 +150,3 @@ submitAddFormButton.addEventListener('submit', handleSubmit);
 editButton.addEventListener('click', openPopup);
 closeButton.addEventListener('click', closePopup);
 formElement.addEventListener('submit', handleFormSubmit);
-
-

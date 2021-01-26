@@ -1,0 +1,13 @@
+.elements__button-active {
+    min-width: 20px;
+    min-height: 18px;
+    background-image: url('../../../images/like-active.svg');
+    background-size: contain;
+    border: none;
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    margin-left: 21px;
+    background-repeat: repeat;
+}
