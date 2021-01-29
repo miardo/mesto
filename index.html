@@ -28,33 +28,29 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <section class="popup">
-      <form name="popup" class="popup__container">
+    <article class="popup">
+      <form name="profile-form" class="popup__container">
         <h2 class="popup__container-name">Редактировать профиль</h2>
         <input type="text" name="name-input" class="popup__container-input"/>
         <input type="text" name="job-input" class="popup__container-input"/>
         <button type="submit" class="popup__container-submit-button">Сохранить</button>
         <button type="button" class="popup__container-close-button"></button>
       </form>
-    </section>
-    <section class="add-form">
-      <form name="add-form" class="add-form__container">
-        <h2 class="add-form__container-name">Новое место</h2>
-        <input type="text" name="add-form-name-input" placeholder="Название" class="add-form__container-input"/>
-        <input type="text" name="add-form-img-input" placeholder="Ссылка на картинку" class="add-form__container-input"/>
-        <button type="submit" class="add-form__container-submit-button">Создать</button>
-        <button type="button" class="add-form__container-close-button"></button>
+      <form name="add-form" class="popup__container">
+        <h2 class="popup__container-name">Новое место</h2>
+        <input type="text" name="add-form-name-input" placeholder="Название" class="popup__container-input"/>
+        <input type="text" name="add-form-img-input" placeholder="Ссылка на картинку" class="popup__container-input"/>
+        <button type="submit" class="popup__container-submit-button">Создать</button>
+        <button type="button" class="popup__container-close-button"></button>
       </form>
-    </section>
-    <section class="image-popup">
-      <form name="image-popup" class="image-popup__container">
-        <figure class="image-popup__block">
-          <img src="#" alt="#" class="image-popup__image">
-          <figcaption class="image-popup__text"></figcaption>
-          <button type="button" class="image-popup__container-close-button"></button>
+      <form name="image-form" class="popup__container popup__container_style-edition">
+        <figure class="popup__container-image-block">
+          <img src="#" alt="#" class="popup__container-image">
+          <figcaption class="popup__container-text"></figcaption>
         </figure>
+        <button type="button" class="popup__container-close-button"></button>
       </form>
-    </section>
+    </article>
     <template class="item_template">
       <article class="elements__box">
         <img src="#" alt="#" class="elements__photo">
@@ -64,7 +60,8 @@
           <button type="button" class="elements__button"></button>
         </div>
       </article>
-		</template>
+    </template>
+    <script src="./scripts/initial-cards.js"></script>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

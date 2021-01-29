@@ -1,15 +1,15 @@
 .popup__container-close-button {
     position: absolute;
-    min-width: 40px;
-    min-height: 40px;
+    min-width: 56px;
+    min-height: 56px;
     background-image: url('../../../images/close-icon.svg');
     background-size: contain;
     border: none;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
-    top: -40px;
-    right: -40px;
+    top: -46px;
+    right: -45px;
     outline: none;
 }
 
