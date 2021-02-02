@@ -28,29 +28,37 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <article class="popup">
+
+    <article class="popup popup_type_edit-form">
       <form name="profile-form" class="popup__container">
         <h2 class="popup__container-name">Редактировать профиль</h2>
         <input type="text" name="name-input" class="popup__container-input"/>
         <input type="text" name="job-input" class="popup__container-input"/>
         <button type="submit" class="popup__container-submit-button">Сохранить</button>
-        <button type="button" class="popup__container-close-button"></button>
+        <button name="close-edit-form" type="button" class="popup__container-close-button"></button>
       </form>
+    </article>
+
+      <article class="popup popup_type_add-card">
       <form name="add-form" class="popup__container">
         <h2 class="popup__container-name">Новое место</h2>
         <input type="text" name="add-form-name-input" placeholder="Название" class="popup__container-input"/>
         <input type="text" name="add-form-img-input" placeholder="Ссылка на картинку" class="popup__container-input"/>
         <button type="submit" class="popup__container-submit-button">Создать</button>
-        <button type="button" class="popup__container-close-button"></button>
+        <button name="close-add-card" type="button" class="popup__container-close-button"></button>
       </form>
+    </article>
+
+      <article class="popup popup_type_show-image">
       <form name="image-form" class="popup__container popup__container_style-edition">
         <figure class="popup__container-image-block">
           <img src="#" alt="#" class="popup__container-image">
           <figcaption class="popup__container-text"></figcaption>
         </figure>
-        <button type="button" class="popup__container-close-button"></button>
+        <button name="close-image" type="button" class="popup__container-close-button"></button>
       </form>
     </article>
+
     <template class="item_template">
       <article class="elements__box">
         <img src="#" alt="#" class="elements__photo">
