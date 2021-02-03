@@ -77,6 +77,7 @@ function addCard (evt) {
         link: addFormImgInput.value
     });
     closePopup(popupAddForm);
+    addForm.reset();
 } 
 
 function openImage(data) {
