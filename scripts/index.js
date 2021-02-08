@@ -19,14 +19,36 @@ const popupAddForm = document.querySelector('.popup_type_add-card');
 const buttonCloseEditForm = document.querySelector('[name="close-edit-form"]');
 const buttonCloseImageForm = document.querySelector('[name="close-image"]');
 const buttonCloseAddForm = document.querySelector('[name="close-add-card"]');
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', useEscape);
+}
+
+function useEscape (evt) {
+    const popupOpen = document.querySelector('.popup_opened');
+    if (evt.key === 'Escape') {
+        closePopup(popupOpen);
+    }
+}
+
+function useClick (popup) {
+    popup.addEventListener('click', (evt) => {
+    if (evt.target === evt.currentTarget) {
+        closePopup(popup);
+    }
+    })
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', useEscape);
 }
+
+popupList.forEach((item) => {
+    useClick(item);
+});
 
 function openProfileForm() {
     nameInput.value = nameText.textContent;
