@@ -24,31 +24,27 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', useEscape);
+    document.addEventListener('click', useClick);
 }
 
-function useEscape (evt) {
+function useEscape(evt) {
     const popupOpen = document.querySelector('.popup_opened');
     if (evt.key === 'Escape') {
         closePopup(popupOpen);
     }
 }
 
-function useClick (popup) {
-    popup.addEventListener('click', (evt) => {
-    if (evt.target === evt.currentTarget) {
-        closePopup(popup);
+function useClick(evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
     }
-    })
 }
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', useEscape);
+    document.removeEventListener('click', useClick);
 }
-
-popupList.forEach((item) => {
-    useClick(item);
-});
 
 function openProfileForm() {
     nameInput.value = nameText.textContent;
@@ -65,16 +61,22 @@ function renderProfile (evt) {
 
 function getCard(data) {
     const templateBox = elementTemplate.cloneNode(true);
-    templateBox.querySelector('.elements__photo').src = data.link;
-    templateBox.querySelector('.elements__photo').alt = data.name;
-    templateBox.querySelector('.elements__text').innerText = data.name;
-    templateBox.querySelector('.elements__delete-button').addEventListener('click', function (evt){
+    const templateBoxImage = templateBox.querySelector('.elements__photo');
+    const templateBoxText = templateBox.querySelector('.elements__text');
+    const templateBoxDeleteButton = templateBox.querySelector('.elements__delete-button');
+    const templateBoxLikeButton = templateBox.querySelector('.elements__button');
+    
+    templateBoxImage.src = data.link;
+    templateBoxImage.alt = data.name;
+    templateBoxText.innerText  = data.name;
+
+    templateBoxDeleteButton.addEventListener('click', function (evt){
         deleteCard(evt);
     });
-    templateBox.querySelector('.elements__button').addEventListener('click', function (evt){
+    templateBoxLikeButton.addEventListener('click', function (evt){
         likeCard(evt);
     });
-    templateBox.querySelector('.elements__photo').addEventListener('click', function (evt){
+    templateBoxImage.addEventListener('click', function (evt){
         openImage(data);
     });
     return templateBox;
@@ -88,10 +90,6 @@ function render() {
 	initialCards.reverse().forEach(renderItem);
 }
 
-function openAddForm() {
-    openPopup(popupAddForm);
-}
-
 function addCard (evt) {
     evt.preventDefault();
     renderItem({
@@ -100,6 +98,9 @@ function addCard (evt) {
     });
     closePopup(popupAddForm);
     addForm.reset();
+    const submitButton =  addForm.querySelector('.popup__container-submit-button');
+    submitButton.classList.add('popup__container-submit-button_inactive');
+    submitButton.setAttribute('disabled', true);
 } 
 
 function openImage(data) {
@@ -127,10 +128,13 @@ buttonCloseImageForm.addEventListener('click', function () {
 });
 
 buttonCloseAddForm.addEventListener('click', function () {
-    closePopup(popupAddForm);
+    closePopup(popupAddForm); 
 });
 
-addFormButton.addEventListener('click', openAddForm);
+addFormButton.addEventListener('click', function () {
+    openPopup(popupAddForm);
+});
+
 addForm.addEventListener('submit', addCard);
 profileFormButton.addEventListener('click', openProfileForm);
 profileForm.addEventListener('submit', renderProfile);
