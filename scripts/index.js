@@ -1,4 +1,6 @@
-const elementTemplate = document.querySelector('.item_template').content;
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 const elements = document.querySelector('.elements');
 const nameText = document.querySelector('.profile__name-text');
 const jobText = document.querySelector('.profile__description');
@@ -19,7 +21,22 @@ const popupAddForm = document.querySelector('.popup_type_add-card');
 const buttonCloseEditForm = document.querySelector('[name="close-edit-form"]');
 const buttonCloseImageForm = document.querySelector('[name="close-image"]');
 const buttonCloseAddForm = document.querySelector('[name="close-add-card"]');
-const popupList = Array.from(document.querySelectorAll('.popup'));
+
+const allValidation = {
+    formSelector: '.popup__container',
+    inputSelector: '.popup__container-input',
+    submitButtonSelector: '.popup__container-submit-button',
+    inactiveButtonClass: 'popup__container-submit-button_inactive',
+    inputErrorClass: 'popup__container-input_type_error',
+    errorClass: 'popup__container-input-error_visible'
+}
+
+const profileFormValidator = new FormValidator(allValidation, profileForm);
+const addFormValidator = new FormValidator(allValidation, addForm);
+
+profileFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -59,64 +76,37 @@ function renderProfile (evt) {
     closePopup(popupProfileForm);
 }
 
-function getCard(data) {
-    const templateBox = elementTemplate.cloneNode(true);
-    const templateBoxImage = templateBox.querySelector('.elements__photo');
-    const templateBoxText = templateBox.querySelector('.elements__text');
-    const templateBoxDeleteButton = templateBox.querySelector('.elements__delete-button');
-    const templateBoxLikeButton = templateBox.querySelector('.elements__button');
-    
-    templateBoxImage.src = data.link;
-    templateBoxImage.alt = data.name;
-    templateBoxText.innerText  = data.name;
+initialCards.reverse().forEach((data) => {
+    const card = new Card(data, '.item_template');
+    const cardElement = card.generateCard();
+    elements.prepend(cardElement);
+}); 
 
-    templateBoxDeleteButton.addEventListener('click', function (evt){
-        deleteCard(evt);
-    });
-    templateBoxLikeButton.addEventListener('click', function (evt){
-        likeCard(evt);
-    });
-    templateBoxImage.addEventListener('click', function (evt){
-        openImage(data);
-    });
-    return templateBox;
-} 
-
-function renderItem(item){
-    elements.prepend(getCard(item));
-}
-
-function render() {
-	initialCards.reverse().forEach(renderItem);
-}
+function newCard(data){
+    const card = new Card(data, '.item_template');
+    const cardElement = card.generateCard();
+    return cardElement;
+};
 
 function addCard (evt) {
     evt.preventDefault();
-    renderItem({
+    const cardElement = newCard({
         name: addFormNameInput.value,
         link: addFormImgInput.value
     });
+    elements.prepend(cardElement);
     closePopup(popupAddForm);
     addForm.reset();
-    const submitButton =  addForm.querySelector('.popup__container-submit-button');
+    const submitButton = addForm.querySelector('.popup__container-submit-button');
     submitButton.classList.add('popup__container-submit-button_inactive');
     submitButton.setAttribute('disabled', true);
 } 
 
-function openImage(data) {
+export function openImage(data) {
     imageInput.src = data.link;
     imageInput.alt = data.name;
     descriptionInput.textContent = data.name;
     openPopup(popupMax);
-}
-
-function deleteCard(evt) {
-    evt.target.closest('.elements__box').remove();
-}
-
-function likeCard(evt) {
-    const likeButton = 'elements__button_active';
-    evt.target.classList.toggle(likeButton);
 }
 
 buttonCloseEditForm.addEventListener('click', function () {
@@ -138,5 +128,3 @@ addFormButton.addEventListener('click', function () {
 addForm.addEventListener('submit', addCard);
 profileFormButton.addEventListener('click', openProfileForm);
 profileForm.addEventListener('submit', renderProfile);
-
-render();
