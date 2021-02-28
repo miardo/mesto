@@ -77,20 +77,18 @@ function renderProfile (evt) {
 }
 
 initialCards.reverse().forEach((data) => {
-    const card = new Card(data, '.item_template');
-    const cardElement = card.generateCard();
-    elements.prepend(cardElement);
+    elements.prepend(createdCard(data));
 }); 
 
-function newCard(data){
+function createdCard(data) {
     const card = new Card(data, '.item_template');
     const cardElement = card.generateCard();
     return cardElement;
-};
+}
 
 function addCard (evt) {
     evt.preventDefault();
-    const cardElement = newCard({
+    const cardElement = createdCard({
         name: addFormNameInput.value,
         link: addFormImgInput.value
     });
