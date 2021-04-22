@@ -1,11 +1,10 @@
-import {openImage} from './index.js';
-
 export default class Card {
-    constructor(data, cardSelector) {
+    constructor(data, cardSelector, handleCardClick) {
         this._data = data;
         this._name = data.name;
         this._link = data.link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -28,7 +27,7 @@ export default class Card {
     }
 
     _openingImage() {
-        openImage(this._data);
+        this._handleCardClick(this._name, this._link);
     }
 
     _likeCard() {

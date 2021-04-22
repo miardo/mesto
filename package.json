@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "## Про содержание Проект представляет собой подобие инстаграма.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miardo/mesto.git"
+  },
+  "author": "KARIMOV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miardo/mesto/issues"
+  },
+  "homepage": "https://github.com/miardo/mesto#readme"
+}
