@@ -17,8 +17,10 @@ from '../utils/constants.js';
 
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
-import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+
+import './index.css';
 
 const popupCard = new PopupWithImage(popupMax);
 popupCard.setEventListeners();
@@ -38,8 +40,6 @@ const popupEditPopup = new PopupWithForm(popupProfileForm, (data) => {
 });
 popupEditPopup.setEventListeners();
 
-
-
 const popupAddPopup = new PopupWithForm(popupAddForm, (data) => {
     const card = new Card(data, '.item_template', handleCardClick);
     const cardElement = card.generateCard();
@@ -47,8 +47,6 @@ const popupAddPopup = new PopupWithForm(popupAddForm, (data) => {
     popupAddPopup.close();
 });
 popupAddPopup.setEventListeners();
-
-
 
 const profileFormValidator = new FormValidator(allValidation, profileForm);
 const addFormValidator = new FormValidator(allValidation, addForm);
