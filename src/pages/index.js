@@ -12,8 +12,9 @@ import {
     popupProfileForm,
     popupAddForm,
     allValidation,
-    initialCards}
-from '../utils/constants.js';
+    initialCards
+}
+    from '../utils/constants.js';
 
 import Section from '../components/Section.js';
 import UserInfo from '../components/UserInfo.js';
@@ -34,6 +35,15 @@ const userInfo = new UserInfo({
     info: '.profile__description'
 });
 
+const profileFormValidator = new FormValidator(allValidation, profileForm);
+const addFormValidator = new FormValidator(allValidation, addForm);
+
+const renderCard = function (data) {
+    const card = new Card(data, '.item_template', handleCardClick);
+    const cardElement = card.generateCard();
+    return cardElement;
+};
+
 const popupEditPopup = new PopupWithForm(popupProfileForm, (data) => {
     userInfo.setUserInfo(data);
     popupEditPopup.close();
@@ -41,15 +51,11 @@ const popupEditPopup = new PopupWithForm(popupProfileForm, (data) => {
 popupEditPopup.setEventListeners();
 
 const popupAddPopup = new PopupWithForm(popupAddForm, (data) => {
-    const card = new Card(data, '.item_template', handleCardClick);
-    const cardElement = card.generateCard();
-    cardList.addItemPrepend(cardElement);
+    cardList.addItemPrepend(renderCard(data));
+    addFormValidator.disabledButton();
     popupAddPopup.close();
 });
 popupAddPopup.setEventListeners();
-
-const profileFormValidator = new FormValidator(allValidation, profileForm);
-const addFormValidator = new FormValidator(allValidation, addForm);
 
 profileFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -57,16 +63,14 @@ addFormValidator.enableValidation();
 const cardList = new Section({
     items: initialCards,
     renderer: (data) => {
-        const card = new Card(data, '.item_template', handleCardClick);
-        const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
+        cardList.addItem(renderCard(data));
     }
 }, elements);
 
 cardList.renderItems();
 
 profileFormButton.addEventListener('click', function () {
-    const currentUserInfo = userInfo.getUserInfo(); 
+    const currentUserInfo = userInfo.getUserInfo();
     nameInput.value = currentUserInfo.name;
     jobInput.value = currentUserInfo.info;
     popupEditPopup.open();

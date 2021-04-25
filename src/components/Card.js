@@ -9,10 +9,10 @@ export default class Card {
 
     _getTemplate() {
         const cardElement = document
-        .querySelector(this._cardSelector)
-        .content
-        .querySelector('.elements__box')
-        .cloneNode(true);
+            .querySelector(this._cardSelector)
+            .content
+            .querySelector('.elements__box')
+            .cloneNode(true);
         return cardElement;
     }
 
@@ -33,7 +33,7 @@ export default class Card {
     _likeCard() {
         this._element.querySelector('.elements__button').classList.toggle('elements__button_active');
     }
-    
+
     _deleteCard() {
         this._element.remove();
         this._element = null;
@@ -42,12 +42,12 @@ export default class Card {
     _setEventListeners() {
         this._element.querySelector('.elements__delete-button').addEventListener('click', () => {
             this._deleteCard()
-            });
+        });
         this._element.querySelector('.elements__button').addEventListener('click', () => {
             this._likeCard()
-            });
+        });
         this._element.querySelector('.elements__photo').addEventListener('click', () => {
             this._openingImage()
-            });
+        });
     }
 };
