@@ -3,6 +3,7 @@
     min-height: 24px;
     background-image: url('../../../images/edit-button.svg');
     background-size: contain;
+    background-repeat: no-repeat;
     border: none;
     background-color: transparent;
     color: inherit;
@@ -13,6 +14,7 @@
 }
 
 .profile__edit-button:hover {
+    transition: opacity 0.1s ease;
     opacity: 0.6;
 }
 

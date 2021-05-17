@@ -8,10 +8,11 @@
     color: inherit;
     cursor: pointer;
     outline: none;
-    margin-left: 21px;
-    background-repeat: repeat;
+    margin-top: 22px;
+    background-repeat: no-repeat;
 }
 
 .elements__button:hover {
+    transition: opacity 0.1s ease;
     opacity: 0.5;
 }
