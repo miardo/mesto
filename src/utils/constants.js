@@ -13,7 +13,12 @@ export const popupProfileForm = document.querySelector('.popup_type_edit-form');
 export const popupAddForm = document.querySelector('.popup_type_add-card');
 export const popupAvatarForm = document.querySelector('.popup_type_upd-ava');
 
-export const allValidation = {
+
+export const profileName = '.profile__name-text';
+export const profileDescription = '.profile__description';
+export const template = '.item_template';
+
+export const validationConfig = {
     formSelector: '.popup__container',
     inputSelector: '.popup__container-input',
     submitButtonSelector: '.popup__container-submit-button',

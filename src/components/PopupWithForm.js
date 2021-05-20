@@ -1,8 +1,8 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-    constructor(selector, formSubmit) {
-        super(selector)
+    constructor(popupElement, formSubmit) {
+        super(popupElement)
         this._submit = formSubmit;
         this._form = this._popup.querySelector('.popup__container');
     }
@@ -24,7 +24,7 @@ export default class PopupWithForm extends Popup {
         });
     }
 
-    getloadingStatus(status, text) {
+    renderLoading(status, text) {
         const submitButton = this._form.querySelector('.popup__container-submit-button');
         if (status === true) {
             submitButton.textContent = text

@@ -1,6 +1,6 @@
 export default class Popup {
-    constructor(selector) {
-        this._popup = selector;
+    constructor(popupElement) {
+        this._popup = popupElement;
         this._handleEscClose = this._handleEscClose.bind(this);
         this._handleOverlayClose = this._handleOverlayClose.bind(this);
     }
