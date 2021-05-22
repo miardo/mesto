@@ -36,8 +36,7 @@ export default class Card {
         if (this.findLike()) {
             this._addLike();
         }
-        if (!this._owner) {
-        } else if (this._owner._id !== this._userId) {
+        if (this._owner._id !== this._userId) {
             this._element.querySelector('.elements__delete-button').remove();
         }
         return this._element;

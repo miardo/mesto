@@ -137,6 +137,7 @@ const popupAddPopup = new PopupWithForm(popupAddForm, (data) => {
         .then((data) => {
             cardList.addItemPrepend(renderCard(data, userInfo.getUserInfo().userId));
             popupAddPopup.close();
+            addFormValidator.disabledButton();
         })
         .catch((err) => {
             console.log(err);
@@ -144,7 +145,6 @@ const popupAddPopup = new PopupWithForm(popupAddForm, (data) => {
         .finally(() => {
             popupAddPopup.renderLoading(false, 'Создать');
         })
-    addFormValidator.disabledButton();
 });
 popupAddPopup.setEventListeners();
 
@@ -154,6 +154,7 @@ const popupAvataPopup = new PopupWithForm(popupAvatarForm, (data) => {
         .then(data => {
             userInfo.setUserInfo(data);
             popupAvataPopup.close();
+            editAvatarValidator.disabledButton();
         })
         .catch((err) => {
             console.log(err)
@@ -161,7 +162,6 @@ const popupAvataPopup = new PopupWithForm(popupAvatarForm, (data) => {
         .finally(() => {
             popupAvataPopup.renderLoading(false, 'Сохранить');
         })
-    editAvatarValidator.disabledButton();
 });
 popupAvataPopup.setEventListeners();
 
